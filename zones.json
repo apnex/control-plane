@@ -1,0 +1,50 @@
+[{
+	"name": "lab",
+	"subnet": "172.16.10.0",
+	"nodes": [
+		{
+			"name": "boot",
+			"address": "172.16.0.1"
+		},
+		{
+			"name": "sddc",
+			"address": "172.16.0.11"
+		},
+		{
+			"name": "vcenter",
+			"address": "172.16.0.13"
+		},
+		{
+			"name": "nsxm01",
+			"address": "172.16.10.15"
+		},
+		{
+			"name": "nsxc01",
+			"address": "172.16.10.16"
+		},
+		{
+			"name": "nsxe01",
+			"address": "172.16.10.18"
+		},
+		{
+			"name": "hcxm01",
+			"address": "172.16.10.22"
+		},
+		{
+			"name": "oms",
+			"address": "172.16.10.25"
+		},
+		{
+			"name": "esx01",
+			"address": "172.16.10.101"
+		},
+		{
+			"name": "esx02",
+			"address": "172.16.10.102"
+		},
+		{
+			"name": "esx03",
+			"address": "172.16.10.103"
+		}
+	]
+}]
