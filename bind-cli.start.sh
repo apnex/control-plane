@@ -8,6 +8,6 @@ echo "-- removing orphaned volumes --"
 docker rm -f $(docker ps -qa -f status=exited) 2>/dev/null
 
 echo "-- starting constellation --"
-docker run -id --net host \
+docker run d -P --net host --restart=unless-stopped \
 	-v ${PWD}/records.json:/usr/lib/node_modules/bind-cli/lib/records.json \
 	--name dns apnex/bind-cli
