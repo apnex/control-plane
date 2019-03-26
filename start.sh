@@ -17,7 +17,9 @@ echo "-- starting constellation --"
 ./pxe.start.sh
 
 # start node-esx
-#docker run -d -p 5081:80 --name node-esx apnex/node-esx
-#docker run -d -p 5082:80 --name node-centos apnex/node-centos
+./esx.start.sh
+
+# start node-centos
+./centos.start.sh
 
 docker ps
