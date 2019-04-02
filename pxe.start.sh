@@ -7,5 +7,5 @@ if [[ -z "$RUNNING" ]]; then
 	printf "[apnex/pxe] not running - now starting\n" 1>&2
 	docker run -d -P --net host \
 		--name pxe \
-		apnex/control-pxe
+	apnex/control-pxe
 fi

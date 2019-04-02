@@ -8,6 +8,7 @@ RUNNING=$(docker ps -q -f name="${SERVICENAME}")
 if [[ -z "$RUNNING" ]]; then
 	printf "[apnex/${SERVICENAME}] not running - now starting\n" 1>&2
 	docker run -d -p 5081:80 \
+		-v ${PWD}/ks.cfg:/usr/share/nginx/html/ks.cfg \
 		--name "${SERVICENAME}" \
-		apnex/"${SERVICENAME}"
+	apnex/"${SERVICENAME}"
 fi
