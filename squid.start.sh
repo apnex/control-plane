@@ -14,5 +14,5 @@ if [[ -z "$RUNNING" ]]; then
 		-v ${PWD}/squid.entrypoint.sh:/sbin/entrypoint.sh \
 		-v ${PWD}/squid.conf:/etc/squid3/squid.conf \
 		-v ${PWD}/cache:/var/spool/squid3 \
-		apnex/control-squid
+	apnex/control-squid
 fi

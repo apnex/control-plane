@@ -8,7 +8,7 @@ docker rm -f $(docker ps -qa -f status=exited) 2>/dev/null
 
 echo "-- starting constellation --"
 # start dns
-./bind-cli.start.sh
+./dns.start.sh
 
 # start squid
 ./squid.start.sh

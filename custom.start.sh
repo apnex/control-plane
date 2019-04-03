@@ -8,7 +8,7 @@ docker rm -f $(docker ps -qa -f status=exited) 2>/dev/null
 
 echo "-- starting constellation --"
 # start dns
-./bind-cli.start.sh
+./dns.start.sh
 
 # start squid
 ./squid.start.sh
@@ -17,7 +17,7 @@ echo "-- starting constellation --"
 docker run -d -P --net host \
 	-v ${PWD}/dhcpd.conf:/etc/dhcpd.conf \
 	--name pxe \
-	apnex/control-pxe
+apnex/control-pxe
 
 # start node-esx
 ./esx.start.sh

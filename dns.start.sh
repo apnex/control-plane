@@ -1,14 +1,15 @@
 #!/bin/bash
-echo "-- shutting down running containers --"
-docker rm -f -v $(docker ps -q) 2>/dev/null
-echo "-- removing untagged containers --"
-docker rmi -f $(docker images -q --filter dangling=true) 2>/dev/null
-echo "-- removing orphaned volumes --"
-docker rm -f $(docker ps -qa -f status=exited) 2>/dev/null
 
-echo "-- starting constellation --"
-docker run -d -P --net host --restart=unless-stopped \
-	-v ${PWD}/zones.json:/root/zones.json \
-	-v ${PWD}/dns.entrypoint.sh:/root/start.sh \
-	--name dns apnex/control-dns
-docker ps
+SERVICENAME="bind-cli"
+
+# launch & persist
+docker rm -v $(docker ps -qa -f name=dns -f status=exited) 2>/dev/null
+RUNNING=$(docker ps -q -f name=dns)
+if [[ -z "$RUNNING" ]]; then
+	touch /etc/resolv.conf
+	printf "[apnex/${SERVICENAME}] not running - now starting\n" 1>&2
+	docker run -d -P --net host --restart=unless-stopped \
+		-v ${PWD}/records.json:/usr/lib/node_modules/bind-cli/lib/records.json \
+		--name dns \
+	apnex/"${SERVICENAME}"
+fi
