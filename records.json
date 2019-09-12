@@ -1,7 +1,7 @@
 [
 	{
 		"name": "boot.lab",
-		"addr": "172.16.0.1"
+		"addr": "172.16.0.10"
 	},
 	{
 		"name": "sddc.lab",
