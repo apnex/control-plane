@@ -8,7 +8,11 @@ docker rm -f $(docker ps -qa -f status=exited) 2>/dev/null
 
 echo "-- starting constellation --"
 # start dns
-./dns.start.sh
+touch /etc/resolv.conf
+docker run -d -P --net host --restart=unless-stopped \
+	-v ${PWD}/custom.records.json:/usr/lib/node_modules/bind-cli/lib/records.json \
+	--name dns \
+apnex/control-dns
 
 # start squid
 ./squid.start.sh
