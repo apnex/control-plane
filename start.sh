@@ -22,4 +22,7 @@ echo "-- starting constellation --"
 # start node-centos
 ./centos.start.sh
 
+# start dns
+./ntp.start.sh
+
 docker ps
