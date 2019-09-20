@@ -12,7 +12,7 @@ touch /etc/resolv.conf
 docker run -d -P --net host --restart=unless-stopped \
 	-v ${PWD}/custom.records.json:/usr/lib/node_modules/bind-cli/lib/records.json \
 	--name dns \
-apnex/bind-cli
+apnex/control-dns
 
 # start squid
 ./squid.start.sh
