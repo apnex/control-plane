@@ -1,0 +1,14 @@
+[Unit]
+Description=Control-NTP Container
+Requires=docker.service
+After=dns.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/root/control-plane/ntp.stop.sh
+ExecStart=/root/control-plane/ntp.start.sh
+ExecStop=/root/control-plane/ntp.stop.sh
+
+[Install]
+WantedBy=multi-user.target

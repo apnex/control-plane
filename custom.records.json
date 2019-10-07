@@ -1,7 +1,7 @@
 [
 	{
 		"name": "boot.lab",
-		"addr": "172.16.0.1"
+		"addr": "172.16.0.10"
 	},
 	{
 		"name": "sddc.lab",
@@ -10,6 +10,10 @@
 	{
 		"name": "vcenter.lab",
 		"addr": "172.16.0.13"
+	},
+	{
+		"name": "mymoojuice.lab",
+		"addr": "172.16.0.30"
 	},
 	{
 		"name": "nsxm01.lab",

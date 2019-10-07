@@ -1,0 +1,14 @@
+[Unit]
+Description=Control-DNS Container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/root/control-plane/dns.stop.sh
+ExecStart=/root/control-plane/dns.start.sh
+ExecStop=/root/control-plane/dns.stop.sh
+
+[Install]
+WantedBy=multi-user.target
