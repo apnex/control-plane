@@ -1,7 +1,11 @@
 [
 	{
-		"name": "boot.lab",
+		"name": "router.lab",
 		"addr": "172.16.0.1"
+	},
+	{
+		"name": "boot.lab",
+		"addr": "172.16.0.5"
 	},
 	{
 		"name": "sddc.lab",
