@@ -1,7 +1,7 @@
 [Unit]
 Description=Control-NTP Container
 Requires=docker.service
-After=dns.service
+After=docker.service
 
 [Service]
 TimeoutStartSec=0

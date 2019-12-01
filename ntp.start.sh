@@ -10,9 +10,13 @@ docker rm -v $(docker ps -qa -f name="${SERVICENAME}" -f status=exited) 2>/dev/n
 RUNNING=$(docker ps -q -f name="${SERVICENAME}")
 if [[ -z "$RUNNING" ]]; then
 	printf "[${IMAGENAME}] not running - now starting\n" 1>&2
-	docker run -d				\
-		--name=${SERVICENAME}		\
-		-p 123:123/udp			\
-		${DOCKER_OPTS}			\
+	DOCKERRUN="docker run"
+	if [[ $0 =~ ^[.] ]]; then # if local
+		DOCKERRUN+=" -d"
+	fi
+	${DOCKERRUN} \
+		--name=${SERVICENAME}	\
+		-p 123:123/udp		\
+		${DOCKER_OPTS}		\
 	${IMAGENAME}
 fi

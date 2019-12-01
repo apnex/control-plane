@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SERVICENAME="dns"
-IMAGENAME="bind-cli"
+IMAGENAME="control-dns"
 
 printf "[apnex/${IMAGENAME}] stopping\n" 1>&2
 docker rm -f "${SERVICENAME}" 2>/dev/null
