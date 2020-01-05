@@ -14,21 +14,18 @@ docker rm -v $(docker ps -qa -f name="${SERVICENAME}" -f status=exited) 2>/dev/n
 # pre-requisites
 function health {
 	HEALTH=$(docker inspect --format='{{json .State.Health}}' dns | jq -r '."Status"')
-	while [[ $HEALTH != "unhealthy" ]]; do
+	while [[ $HEALTH == "healthy" || $HEALTH == "starting" ]]; do
 		printf "%s\n" "health: ${HEALTH}"
 		sleep 2
 		HEALTH=$(docker inspect --format='{{json .State.Health}}' dns | jq -r '."Status"')
 	done
 	printf "%s\n" "health: ${HEALTH}"
 	case "${HEALTH}" in
-		healthy)
+		healthy|starting)
 			exit 0
-		;;
-		unhealthy)
-			exit 1
 		;;
 		*)
-			exit 0
+			exit 1
 		;;
 	esac
 }
@@ -37,12 +34,8 @@ function health {
 RUNNING=$(docker ps -q -f name="${SERVICENAME}")
 if [[ -z "$RUNNING" ]]; then
 	printf "[${SERVICENAME}] not running - now starting\n" 1>&2
-	DOCKERRUN="docker run"
-	if [[ $0 =~ ^[.] ]]; then # if local
-		DOCKERRUN+=" -d"
-	fi
 	touch /etc/resolv.conf
-	${DOCKERRUN} -d -P --net host \
+	docker run -d -P --net host \
 		-v ${WORKDIR}/records.json:/usr/lib/node_modules/bind-cli/lib/records.json \
 		--name "${SERVICENAME}" \
 	apnex/"${IMAGENAME}"
