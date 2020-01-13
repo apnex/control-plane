@@ -15,4 +15,5 @@ if [[ -z "$RUNNING" ]]; then
 		-v ${PWD}/squid.conf:/etc/squid3/squid.conf \
 		-v ${PWD}/cache:/var/spool/squid3 \
 	apnex/control-squid
+	./squid.redirect.enable.sh
 fi
