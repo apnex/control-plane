@@ -1,11 +1,11 @@
 [
 	{
 		"name": "router.lab",
-		"addr": "172.16.0.1"
+		"addr": "172.16.0.10"
 	},
 	{
 		"name": "boot.lab",
-		"addr": "172.16.0.5"
+		"addr": "172.16.0.10"
 	},
 	{
 		"name": "sddc.lab",
@@ -26,6 +26,10 @@
 	{
 		"name": "nsxe01.lab",
 		"addr": "172.16.10.18"
+	},
+	{
+		"name": "nsxe02.lab",
+		"addr": "172.16.10.19"
 	},
 	{
 		"name": "hcxm01.lab",
