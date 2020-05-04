@@ -1,2 +1,2 @@
 #!/bin/bash
-snap install --edge node --classic
+snap install node --channel=12/stable --classic

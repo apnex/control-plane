@@ -1,6 +1,6 @@
 #!/bin/bash
-yum install epel-release
-yum install snapd
+yum install -y epel-release
+yum install -y snapd
 systemctl start snapd
 systemctl enable --now snapd.socket
 ln -s /var/lib/snapd/snap /snap
