@@ -4,9 +4,9 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-TimeoutStartSec=0
-Restart=always
-ExecStartPre=-/root/control-plane/dns.stop.sh
+Type=forking
+Restart=on-failure
+RestartSec=3
 ExecStart=/root/control-plane/dns.start.sh
 ExecStop=/root/control-plane/dns.stop.sh
 
