@@ -1,0 +1,42 @@
+[
+	{
+		"name": "boot.lab",
+		"addr": "172.16.10.1"
+	},
+	{
+		"name": "sddc.lab",
+		"addr": "172.16.100.38"
+	},
+	{
+		"name": "vcenter.lab",
+		"addr": "172.16.100.45"
+	},
+	{
+		"name": "vcenter.lab01",
+		"addr": "172.16.10.100"
+	},
+	{
+		"name": "esx01.lab",
+		"addr": "172.16.10.101"
+	},
+	{
+		"name": "esx02.lab",
+		"addr": "172.16.10.102"
+	},
+	{
+		"name": "esx03.lab",
+		"addr": "172.16.10.103"
+	},
+	{
+		"name": "esx04.lab",
+		"addr": "172.16.10.104"
+	},
+	{
+		"name": "nsxm01.lab",
+		"addr": "172.16.10.107"
+	},
+	{
+		"name": "nsxe01.lab",
+		"addr": "172.16.10.108"
+	}
+]

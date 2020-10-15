@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ntpq -p
