@@ -1,11 +1,14 @@
 # main
+#acl all src all
 http_access allow all
-http_port 3128 intercept
-http_port 8080 accel
+#http_port 3128 intercept
+#http_port 8080 accel
+http_port 8080
 #tcp_outgoing_address 172.16.10.1
-cache_effective_user proxy
-cache_effective_group proxy
+#cache_effective_user proxy
+#cache_effective_group proxy
 visible_hostname boot.lab
+#debug_options ALL,1 33,2 28,9
 
 # cache
 maximum_object_size 5120 MB

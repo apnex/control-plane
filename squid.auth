@@ -1,0 +1,17 @@
+## init
+http_port 8080
+visible_hostname boot.lab
+debug_options ALL,1 33,2 28,9
+
+## setup auth
+auth_param basic program /usr/lib/squid3/basic_ncsa_auth /etc/squid3/htpasswd
+auth_param basic realm proxy
+acl authenticated proxy_auth REQUIRED
+
+# access
+http_access allow authenticated
+http_access deny all
+
+# logging
+access_log daemon:/var/log/squid3/access.log
+cache_log /var/log/squid3/cache.log

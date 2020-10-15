@@ -1,0 +1,34 @@
+[
+	{
+		"name": "esx01.core.nest",
+		"addr": "10.30.0.15"
+	},
+	{
+		"name": "esx02.core.nest",
+		"addr": "10.30.0.16"
+	},
+	{
+		"name": "esx03.core.nest",
+		"addr": "10.30.0.17"
+	},
+	{
+		"name": "esx04.core.nest",
+		"addr": "10.30.0.18"
+	},
+	{
+		"name": "esx05.core.nest",
+		"addr": "10.30.0.19"
+	},
+	{
+		"name": "control.core.nest",
+		"addr": "10.30.0.30"
+	},
+	{
+		"name": "factory.core.nest",
+		"addr": "10.30.0.32"
+	},
+	{
+		"name": "vcenter.core.nest",
+		"addr": "10.30.0.33"
+	}
+]
