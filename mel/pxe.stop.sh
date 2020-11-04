@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SERVICENAME="ntp"
-IMAGENAME="control-ntp"
+SERVICENAME="pxe"
+IMAGENAME="control-pxe"
 
 printf "[apnex/${IMAGENAME}] stopping\n" 1>&2
 docker rm -f "${SERVICENAME}" 2>/dev/null
