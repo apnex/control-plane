@@ -39,5 +39,5 @@ if [[ -z "$RUNNING" ]]; then
 		-v ${WORKDIR}/records.json:/usr/lib/node_modules/bind-cli/lib/records.json \
 		--name "${SERVICENAME}" \
 	apnex/"${IMAGENAME}"
-	health
+	#health
 fi
