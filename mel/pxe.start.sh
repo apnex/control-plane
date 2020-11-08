@@ -11,7 +11,7 @@ RUNNING=$(docker ps -q -f name="${SERVICENAME}")
 if [[ -z "$RUNNING" ]]; then
 	printf "[apnex/${SERVICENAME}] not running - now starting\n" 1>&2
 	docker run -d -P --net host \
-		"${VOLMOUNTS}" \
+		${VOLMOUNTS} \
 		--name "${SERVICENAME}" \
 	"apnex/${IMAGENAME}"
 fi
