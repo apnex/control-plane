@@ -8,27 +8,27 @@
 		"addr": "172.16.10.110"
 	},
 	{
-		"name": "esx01.lab",
+		"name": "esx11.lab01",
 		"addr": "172.16.10.111"
 	},
 	{
-		"name": "esx02.lab",
+		"name": "esx12.lab01",
 		"addr": "172.16.10.112"
 	},
 	{
-		"name": "esx03.lab",
+		"name": "esx13.lab01",
 		"addr": "172.16.10.113"
 	},
 	{
-		"name": "esx04.lab",
+		"name": "esx14.lab01",
 		"addr": "172.16.10.114"
 	},
 	{
-		"name": "nsxm01.lab",
+		"name": "nsxm01.lab01",
 		"addr": "172.16.10.117"
 	},
 	{
-		"name": "nsxe01.lab",
+		"name": "nsxe01.lab01",
 		"addr": "172.16.10.118"
 	},
 	{
