@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: control-dns
+spec:
+  hostNetwork: true
+  containers:
+  - name: control-dns
+    image: apnex/control-dns
+    volumeMounts:
+    - name: config-volume
+      mountPath: /usr/lib/node_modules/bind-cli/lib/records.json
+      subPath: records.json
+  volumes:
+    - name: config-volume
+      configMap:
+        name: dns-records
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dns-records
+  namespace: default
+data:
+  records.json: |
+    [
+    	{
+    		"name": "esx01.core.syd",
+    		"addr": "10.30.0.15"
+    	},
+    	{
+    		"name": "esx02.core.syd",
+    		"addr": "10.30.0.16"
+    	},
+    	{
+    		"name": "esx03.core.syd",
+    		"addr": "10.30.0.17"
+    	},
+    	{
+    		"name": "esx04.core.syd",
+    		"addr": "10.30.0.18"
+    	},
+    	{
+    		"name": "esx05.core.syd",
+    		"addr": "10.30.0.19"
+    	},
+    	{
+    		"name": "control.core.syd",
+    		"addr": "10.30.0.30"
+    	},
+    	{
+    		"name": "factory.core.syd",
+    		"addr": "10.30.0.32"
+    	},
+    	{
+    		"name": "vcenter.core.syd",
+    		"addr": "10.30.0.33"
+    	}
+    ]
