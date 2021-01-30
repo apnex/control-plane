@@ -1,9 +1,29 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vip-control-dns
+  labels:
+    app: control-dns
+  annotations:
+    metallb.universe.tf/allow-shared-ip: host
+spec:
+  selector:
+    app: control-dns
+  ports:
+    - port: 53
+      targetPort: 53
+      protocol: UDP
+  type: LoadBalancer
+---
 apiVersion: v1
 kind: Pod
 metadata:
   name: control-dns
+  labels:
+    app: control-dns
 spec:
-  hostNetwork: true
+  hostNetwork: false
   containers:
   - name: control-dns
     image: apnex/control-dns
@@ -50,10 +70,10 @@ data:
     	},
     	{
     		"name": "factory.core.syd",
-    		"addr": "10.30.0.32"
+    		"addr": "10.30.0.31"
     	},
     	{
     		"name": "vcenter.core.syd",
-    		"addr": "10.30.0.33"
+    		"addr": "10.30.0.32"
     	}
     ]
