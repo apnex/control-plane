@@ -1,40 +1,48 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: DaemonSet
 metadata:
   name: control-frr
 spec:
-  volumes:
-    - name: frr-storage
-      hostPath:
-        path: /var/frr
-        type: DirectoryOrCreate
-    - name: frr-init
-      configMap:
-        defaultMode: 0755
-        name: frr-init-map
-    - name: frr-conf
-      configMap:
-        defaultMode: 0644
-        name: frr-conf-map
-  hostNetwork: true
-  containers:
-  - name: control-frr 
-    image: frrouting/frr
-    volumeMounts:
-      - mountPath: /etc/frr
-        name: frr-storage
-      - mountPath: /bin/frr-start.sh
-        name: frr-init
-        subPath: frr-start.sh
-      - mountPath: /etc/frr/daemons
-        name: frr-conf
-        subPath: daemons
-      - mountPath: /daemons
-        name: frr-conf
-        subPath: daemons
-    command: ["/bin/frr-start.sh"]
-    securityContext:
-      privileged: true
+  selector:
+    matchLabels:
+      name: control-frr-set
+  template:
+    metadata:
+      labels:
+        name: control-frr-set
+    spec:
+      volumes:
+        - name: frr-storage
+          hostPath:
+            path: /var/frr
+            type: DirectoryOrCreate
+        - name: frr-init
+          configMap:
+            defaultMode: 0755
+            name: frr-init-map
+        - name: frr-conf
+          configMap:
+            defaultMode: 0644
+            name: frr-conf-map
+      hostNetwork: true
+      containers:
+      - name: control-frr 
+        image: frrouting/frr
+        volumeMounts:
+          - mountPath: /etc/frr
+            name: frr-storage
+          - mountPath: /bin/frr-start.sh
+            name: frr-init
+            subPath: frr-start.sh
+          - mountPath: /etc/frr/daemons
+            name: frr-conf
+            subPath: daemons
+          - mountPath: /daemons
+            name: frr-conf
+            subPath: daemons
+        command: ["/bin/frr-start.sh"]
+        securityContext:
+          privileged: true
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -48,7 +56,6 @@ data:
     	echo "[INFO] frr.conf missing - creating file...."
     	cat <<- EOF >/etc/frr/frr.conf
     		frr defaults traditional
-    		hostname control
     		!
     		line vty
     		!
