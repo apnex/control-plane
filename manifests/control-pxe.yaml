@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: control-pxe
+spec:
+  selector:
+    matchLabels:
+      name: control-pxe-deploy
+  template:
+    metadata:
+      labels:
+        name: control-pxe-deploy
+    spec:
+      volumes:
+        - name: pxe-conf
+          configMap:
+            defaultMode: 0644
+            name: pxe-conf-map
+      hostNetwork: true
+      containers:
+      - name: control-pxe 
+        image: apnex/control-pxe
+        volumeMounts:
+          - mountPath: /etc/dhcp/dhcpd.conf
+            name: pxe-conf
+            subPath: dhcpd.conf
+        securityContext:
+          privileged: true
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pxe-conf-map
+data:
+  dhcpd.conf: |
+    # global options
+    include "/etc/dhcp/ipxe.options";
+    default-lease-time 600;
+    max-lease-time 7200;
+    authoritative;
+
+    # mgmt subnet
+    subnet 10.30.0.0 netmask 255.255.255.0 {
+    	range 10.30.0.50 10.30.0.99;
+    	next-server 10.30.0.30;
+    	option subnet-mask 255.255.255.0;
+    	option broadcast-address 10.30.0.255;
+    	option routers 10.30.0.254;
+    	option domain-name "core.nest";
+    	option domain-name-servers 10.30.0.30;
+    }
+
+    # bound ips
+    host esx11.lab {
+    	option host-name "esx11.lab01.syd";
+    	hardware ethernet 00:de:ad:be:11:01;
+    	fixed-address 10.30.0.111;
+    }
+    host esx12.lab {
+    	option host-name "esx12.lab01.syd";
+    	hardware ethernet 00:de:ad:be:12:01;
+    	fixed-address 10.30.0.112;
+    }
+    host esx13.lab {
+    	option host-name "esx13.lab01.syd";
+    	hardware ethernet 00:de:ad:be:13:01;
+    	fixed-address 10.30.0.113;
+    }
+    host esx14.lab {
+    	option host-name "esx14.lab01.syd";
+    	hardware ethernet 00:de:ad:be:14:01;
+    	fixed-address 10.30.0.114;
+    }
