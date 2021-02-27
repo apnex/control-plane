@@ -75,5 +75,37 @@ data:
     	{
     		"name": "vcenter.core.syd",
     		"addr": "10.30.0.32"
+    	},
+    	{
+    		"name": "vcenter.lab01.syd",
+    		"addr": "10.30.0.110"
+    	},
+    	{
+    		"name": "esx11.lab01.syd",
+    		"addr": "10.30.0.111"
+    	},
+    	{
+    		"name": "esx12.lab01.syd",
+    		"addr": "10.30.0.112"
+    	},
+    	{
+    		"name": "esx13.lab01.syd",
+    		"addr": "10.30.0.113"
+    	},
+    	{
+    		"name": "esx14.lab01.syd",
+    		"addr": "10.30.0.114"
+    	},
+    	{
+    		"name": "nsxm01.lab01.syd",
+    		"addr": "10.30.0.117"
+    	},
+    	{
+    		"name": "nsxe01.lab01.syd",
+    		"addr": "10.30.0.118"
+    	},
+    	{
+    		"name": "avic01.lab01.syd",
+    		"addr": "10.30.0.119"
     	}
     ]
